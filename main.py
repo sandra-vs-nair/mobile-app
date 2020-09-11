@@ -45,7 +45,6 @@ class LoginSuccessScreen(Screen):
         available_feelings=glob.glob("files/*txt")
         
         available_feelings=[Path(filename).stem for filename in available_feelings]
-        print(available_feelings)
         
         if feel in available_feelings:
             with open(f"files/{feel}.txt",encoding="utf8") as file:
