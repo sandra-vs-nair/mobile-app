@@ -1,0 +1,111 @@
+<LoginScreen>:
+	GridLayout:
+		cols: 1
+		GridLayout:
+			cols: 1
+			padding: 15,15
+			spacing: 20,20
+			Label:
+			    font_size:"20sp"
+				text:"User Login"
+			TextInput:
+				id:username
+				hint_text:"Username"
+			TextInput:
+				id:password
+				password:True
+				hint_text:"Password"
+			RelativeLayout:
+				Button:
+					text:"Login"
+					on_press:root.login(root.ids.username.text,root.ids.password.text)
+					size_hint:0.3,0.5
+					pos_hint:{'center_x':0.5,'center_y':0.6}
+			Label:
+				id:login_wrong
+		GridLayout:
+			cols: 2
+			size_hint:0.2,0.2
+			padding: 10,10
+			spacing: 10,0
+			Button:
+				#FIXME
+				#Now this button has no action associated with it.
+				background_color:1,1,1,0
+				opacity:1 if self.state == 'normal' else 0.5
+				color:0.1,0.7,1,1
+				text:"Forgot password?"
+			Button:
+				background_color:1,1,1,0
+				opacity:1 if self.state == 'normal' else 0.5
+				color:0.1,0.7,1,1
+				text:"Sign Up"
+				on_press: root.sign_up()
+
+<LoginSuccessScreen>:
+	GridLayout:
+		padding:30,30
+		spacing:30,30
+		cols: 1
+		ImageButton:
+			source:'logout_hover.png' if self.hovered else 'logout_nothover.png'
+			size_hint:0.35,0.35
+			on_press: root.logout()
+		Label:
+			text:"How do you feel?"
+		TextInput:
+			id:feeling
+			hint_test:"Happy,sad,unloved etc."
+		Button:
+			text:"Enlighten me"
+			on_press:root.display_quote(root.ids.feeling.text)
+		ScrollView:
+			Label:
+			    id:quote
+				text:""
+				text_size:self.width,None
+				size_hint_y:None
+				height:self.texture_size[1]
+				
+<SignupScreen>:
+	GridLayout:
+		cols: 1
+		padding: 15,15
+		spacing: 20,20
+		Label:
+		    font_size:"20sp"
+			text:"Sign up here"
+		TextInput:
+			id: username
+			hint_text:"Username"
+			size_hint:0.3,0.5
+		TextInput:
+			id: password
+			hint_text:"Password"
+			size_hint:0.3,0.5
+		RelativeLayout:
+			Button:
+				text:"Submit"
+				on_press: root.add_user(root.ids.username.text,root.ids.password.text)
+				size_hint:0.3,0.5
+				pos_hint:{'center_x':0.5,'center_y':0.6}
+				
+<SignupSuccessScreen>:
+	GridLayout:
+		cols: 1
+		Label:
+			text:"Login successful"
+		Button:
+			text:"Go to login page"
+			on_press: root.login_page()
+
+
+<RootWidget>:
+	LoginScreen:
+		name:"login_screen"
+	LoginSuccessScreen:
+		name:"login_success"
+    SignupScreen:
+		name:"sign_up_screen"
+	SignupSuccessScreen:
+		name:"sign_up_success"
