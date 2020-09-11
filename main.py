@@ -42,13 +42,13 @@ class LoginSuccessScreen(Screen):
         self.manager.current="login_screen"
     def display_quote(self,feel):
         feel=feel.lower()
-        available_feelings=glob.glob("*txt")
+        available_feelings=glob.glob("files/*txt")
         
         available_feelings=[Path(filename).stem for filename in available_feelings]
         print(available_feelings)
         
         if feel in available_feelings:
-            with open(f"{feel}.txt",encoding="utf8") as file:
+            with open(f"files/{feel}.txt",encoding="utf8") as file:
                 quotes=file.readlines()
             self.ids.quote.text=random.choice(quotes)
         else:
