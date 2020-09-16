@@ -3,7 +3,7 @@
 This project demonstrates a mobile application. It has
 1. Login feature.
 2. Signup feature.
-3. Receives user input on how he is feeling at the moment. (happy,sad or unloved)
+3. Receives user input on how he is feeling at the moment (happy,sad or unloved)
 4. Displays a quote according to his mood.
 
 ## Prerequisites
